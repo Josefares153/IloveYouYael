@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>I Love You ❤️</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background: url('https://img.freepik.com/vector-gratis/tema-san-valentin-corazones-cielo-rosa_1308-38030.jpg?semt=ais_hybrid&w=740') no-repeat center center;
+      background-size: cover;
+      background-attachment: fixed;
+      font-family: 'Arial', sans-serif;
+      text-align: center;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .message {
+      background: rgba(255, 255, 255, 0.8);
+      padding: 25px;
+      border-radius: 15px;
+      box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
+      font-size: 28px;
+      color: #d63384;
+      font-weight: bold;
+      margin-bottom: 25px;
+      transition: transform 0.3s ease;
+      animation: bounce 1s infinite;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-15px); }
+    }
+
+    .message:hover {
+      transform: scale(1.1);
+    }
+
+    #bubbles-text {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      overflow: hidden;
+      z-index: 1;
+    }
+
+    .text-bubble {
+      position: absolute;
+      font-size: 18px;
+      font-family: 'Cursive', sans-serif;
+      color: #d63384;
+      background-color: rgba(255, 255, 255, 0.7);
+      padding: 10px 20px;
+      border-radius: 25px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      animation: floatText 8s ease-in-out forwards;
+      white-space: nowrap;
+    }
+
+    @keyframes floatText {
+      0% { opacity: 0; transform: scale(0.5) translateY(0px); }
+      50% { opacity: 1; transform: scale(1.2) translateY(-50px); }
+      100% { opacity: 0; transform: scale(1) translateY(-100px); }
+    }
+
+    @media (max-width: 768px) {
+      body {
+        background-size: 100% 100%;
+        background-position: center top;
+      }
+
+      .message { font-size: 24px; padding: 20px; }
+      .text-bubble { font-size: 16px; padding: 8px 16px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="message">I Love You 😚</div>
+  <div id="bubbles-text"></div>
+
+  <script>
+    const messages = [
+      "Je t’aime énormément ❤️",
+      "Merci d’être dans ma vie 🌟",
+      "Tu es ma personne préférée 💕",
+      "Ensemble pour toujours 🥰",
+      "Toi et moi, pour toujours 💖",
+      "Ton sourire m’illumine 💫",
+      "Tu es la meilleure chose qui me soit arrivée 😍",
+      "Chaque moment avec toi est magique ✨",
+      "Je pense toujours à toi 💭",
+      "Mon cœur est à toi 💘",
+      "Ton amour est mon refuge 🏡",
+      "Avec toi, je me sens complet 🌈",
+      "Ton regard me fait fondre 🔥",
+      "Tu es mon rêve devenu réalité 🌠",
+      "Aucun mot ne peut décrire ce que je ressens pour toi 💌",
+      "Je veux passer ma vie à te faire sourire 😊",
+      "Tu rends chaque jour plus beau 🌞",
+      "Je suis tellement chanceux de t’avoir 🍀",
+      "Toi + Moi = Pour l’éternité ♾️",
+      "Rien ne me rend plus heureux que toi 💕",
+      "Tu me rends fou... mais j'adore ça 😜",
+      "Tu ronfles parfois... mais c’est mignon 😆",
+      "Je vole ton pull parce qu’il sent toi 😋",
+      "Tu m’énerves... mais je t’aime encore plus après 😘",
+      "Tu dis toujours que j’ai tort... mais t’as tort 😎",
+      "Tu prends trop de place dans le lit… mais dans mon cœur aussi 😴❤️",
+      "Tu me rends accro... comme au chocolat 🍫",
+      "Promis, je te taquine parce que je t’aime 🐣",
+      "Tu m’as ensorcelé... j’ai plus d’échappatoire 😵‍💫",
+      "Si t’étais un virus, je voudrais jamais guérir 😍",
+      "Ton câlin est mon endroit préféré 🧸",
+      "Je t’aime plus que Netflix et les frites 🍟❤️",
+      "Quand tu souris, mon cœur oublie comment battre 😳",
+      "Tu as volé mon cœur… et mes chocolats 😅",
+      "Je te laisse la dernière part... c’est ça l’amour 😘",
+      "Tu es mon petit rayon de soleil (même quand tu bougonnes) ☀️😆",
+      "Tu fais battre mon cœur comme un tambour 🥁💓",
+      "Je t’aime même quand tu manges mes frites sans demander 😤💕",
+      "Je te suivrais partout… sauf peut-être dans une file d’attente 😅",
+      "Ton rire est mon son préféré 🎶",
+      "Je suis accro à toi (et à ton odeur aussi) 👃💖",
+      "Tu es la cause de mes papillons dans le ventre 🦋",
+      "Tu es plus douse qu’un chaton sur un oreiller 🐱🛏️",
+      "Ton amour est mon superpouvoir 🦸‍♂️❤️",
+      "Tu es mon bug préféré dans ce monde de logiciels 🖥️💘",
+      "Je veux vieillir avec toi… mais pas tout de suite hein 😄",
+      "Chaque message de toi me rend débile de bonheur 😵‍😍",
+      "Je t’aime même quand tu prends 100 ans à choisir un film 🎬💞",
+      "Quand je suis avec toi, même le silence est parfait 🤫❤️",
+      "Tu es ma distraction préférée, et je ne veux plus me concentrer 😍",
+    ];
+
+    function createTextBubble() {
+      const bubble = document.createElement("div");
+      bubble.className = "text-bubble";
+      bubble.innerText = messages[Math.floor(Math.random() * messages.length)];
+      const left = Math.random() * 80 + 10;
+      const top = Math.random() * 80 + 10;
+      bubble.style.left = left + "vw";
+      bubble.style.top = top + "vh";
+      document.getElementById("bubbles-text").appendChild(bubble);
+
+      setTimeout(() => {
+        const rect = bubble.getBoundingClientRect();
+        if (rect.right > window.innerWidth) bubble.style.left = `${window.innerWidth - rect.width - 10}px`;
+        if (rect.bottom > window.innerHeight) bubble.style.top = `${window.innerHeight - rect.height - 10}px`;
+        if (rect.left < 0) bubble.style.left = "10px";
+        if (rect.top < 0) bubble.style.top = "10px";
+      }, 10);
+
+      setTimeout(() => {
+        bubble.remove();
+      }, 8000);
+    }
+
+    setInterval(createTextBubble, 500);
+  </script>
+</body>
+</html>
